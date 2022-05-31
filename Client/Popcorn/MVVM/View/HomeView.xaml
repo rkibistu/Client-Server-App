@@ -1,0 +1,227 @@
+﻿<UserControl x:Class="Popcorn.MVVM.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Popcorn.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="460" Width="620">
+    <Grid x:Name="mainGrid"> 
+        <ScrollViewer HorizontalAlignment="Left" Width="620">
+            <StackPanel x:Name="MoviesStackPanel">
+                <StackPanel
+                        x:Name="stackpanel1"
+                        Orientation="Horizontal"
+                        Width="auto"
+                        Height="200">
+
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item00">
+                        <Image x:Name="item00_img" Width="150" Height="150"/>
+                        <Label x:Name="item00_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item01">
+                        <Image x:Name="item01_img" Width="150" Height="150"/>
+                        <Label x:Name="item01_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item02">
+                        <Image x:Name="item02_img" Width="150" Height="150"/>
+                        <Label x:Name="item02_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel
+                        x:Name="stackpanel2"
+                        Orientation="Horizontal"
+                        Width="auto"
+                        Height="200" HorizontalAlignment="Stretch">
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item10">
+                        <Image x:Name="item10_img" Width="150" Height="150"/>
+                        <Label x:Name="item10_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item11">
+                        <Image x:Name="item11_img" Width="150" Height="150"/>
+                        <Label x:Name="item11_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item12">
+                        <Image x:Name="item12_img" Width="150" Height="150"/>
+                        <Label x:Name="item12_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel
+                        x:Name="stackpanel3"
+                        Orientation="Horizontal"
+                        Width="auto"
+                        Height="200">
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item20">
+                        <Image x:Name="item20_img" Width="150" Height="150"/>
+                        <Label x:Name="item20_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item21">
+                        <Image x:Name="item21_img" Width="150" Height="150"/>
+                        <Label x:Name="item21_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item22">
+                        <Image x:Name="item22_img" Width="150" Height="150"/>
+                        <Label x:Name="item22_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel
+                        x:Name="stackpanel4"
+                        Orientation="Horizontal"
+                        Width="auto"
+                        Height="200">
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item30">
+                        <Image x:Name="item30_img" Width="150" Height="150"/>
+                        <Label x:Name="item30_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item31">
+                        <Image x:Name="item31_img" Width="150" Height="150"/>
+                        <Label x:Name="item31_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item32">
+                        <Image x:Name="item32_img" Width="150" Height="150"/>
+                        <Label x:Name="item32_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel
+                        x:Name="stackpanel5"
+                        Orientation="Horizontal"
+                        Width="auto"
+                        Height="200">
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item40">
+                        <Image x:Name="item40_img" Width="150" Height="150"/>
+                        <Label x:Name="item40_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item41">
+                        <Image x:Name="item41_img" Width="150" Height="150"/>
+                        <Label x:Name="item41_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                            Width="200" Height="200"
+                            x:Name="item42">
+                        <Image x:Name="item42_img" Width="150" Height="150"/>
+                        <Label x:Name="item42_title"
+                                   Width="auto" Height="auto"
+                                   Margin="5"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

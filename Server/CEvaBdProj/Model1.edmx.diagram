@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="424688e6b90841bcba442386baf5e1a2" Name="Diagram1">
+        <EntityTypeShape EntityType="CinemaModel.Filme" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.GenFilme" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Genuri" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.ProgramariFilme" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Sali" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Tipuri" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Angajati" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.LocuriSali" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.TipulFilmului" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="CinemaModel.FK_GenFilme_Filme" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_ProgramariFilme_Filme" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_TipulFilmului_Filme" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_GenFilme_Genuri" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_LocuriSali_ProgramariFilme" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_ProgramariFilme_Sali" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_TipulFilmului_Tipuri" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

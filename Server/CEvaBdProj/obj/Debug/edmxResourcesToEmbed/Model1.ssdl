@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Cinema.dbo.Angajati' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Angajati">
+    <Key>
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="Prenume" />
+      <PropertyRef Name="CNP" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Prenume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CNP" Type="nvarchar" MaxLength="13" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Filme">
+    <Key>
+      <PropertyRef Name="IdFilm" />
+    </Key>
+    <Property Name="IdFilm" Type="int" Nullable="false" />
+    <Property Name="Nume" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Rating" Type="float" Nullable="false" />
+    <Property Name="Varsta minima" Type="int" />
+    <Property Name="Poze" Type="nvarchar" MaxLength="64" />
+    <Property Name="Trailer" Type="nvarchar" MaxLength="64" />
+    <Property Name="Distributie" Type="nvarchar" MaxLength="512" />
+    <Property Name="Limba nativa" Type="nchar" MaxLength="10" />
+    <Property Name="Regizor" Type="nchar" MaxLength="32" />
+    <Property Name="Descriere" Type="nvarchar" MaxLength="128" />
+    <Property Name="Durata" Type="int" />
+  </EntityType>
+  <EntityType Name="GenFilme">
+    <Key>
+      <PropertyRef Name="Cheie" />
+    </Key>
+    <Property Name="IdFilm" Type="int" Nullable="false" />
+    <Property Name="IdGen" Type="int" Nullable="false" />
+    <Property Name="Cheie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Genuri">
+    <Key>
+      <PropertyRef Name="IdGen" />
+    </Key>
+    <Property Name="IdGen" Type="int" Nullable="false" />
+    <Property Name="Denumire" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Cinema.dbo.LocuriSali' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LocuriSali">
+    <Key>
+      <PropertyRef Name="IdProgramare" />
+      <PropertyRef Name="NrLoc" />
+      <PropertyRef Name="State" />
+    </Key>
+    <Property Name="IdProgramare" Type="int" Nullable="false" />
+    <Property Name="NrLoc" Type="int" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProgramariFilme">
+    <Key>
+      <PropertyRef Name="IdProgramare" />
+    </Key>
+    <Property Name="IdProgramare" Type="int" Nullable="false" />
+    <Property Name="IdSala" Type="int" Nullable="false" />
+    <Property Name="Start" Type="datetime" Nullable="false" />
+    <Property Name="End" Type="datetime" Nullable="false" />
+    <Property Name="IdFilm" Type="int" Nullable="false" />
+    <Property Name="IdTip" Type="int" />
+    <Property Name="Pret" Type="int" />
+  </EntityType>
+  <EntityType Name="Sali">
+    <Key>
+      <PropertyRef Name="NrSala" />
+    </Key>
+    <Property Name="NrSala" Type="int" Nullable="false" />
+    <Property Name="Locuri" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Cinema.dbo.TipulFilmului' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TipulFilmului">
+    <Key>
+      <PropertyRef Name="IdFilm" />
+      <PropertyRef Name="IdTip" />
+    </Key>
+    <Property Name="IdFilm" Type="int" Nullable="false" />
+    <Property Name="IdTip" Type="int" Nullable="false" />
+    <Property Name="Cheie" Type="int" />
+  </EntityType>
+  <EntityType Name="Tipuri">
+    <Key>
+      <PropertyRef Name="IdTip" />
+    </Key>
+    <Property Name="IdTip" Type="int" Nullable="false" />
+    <Property Name="Denumire" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_GenFilme_Filme">
+    <End Role="Filme" Type="Self.Filme" Multiplicity="1" />
+    <End Role="GenFilme" Type="Self.GenFilme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filme">
+        <PropertyRef Name="IdFilm" />
+      </Principal>
+      <Dependent Role="GenFilme">
+        <PropertyRef Name="IdFilm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GenFilme_Genuri">
+    <End Role="Genuri" Type="Self.Genuri" Multiplicity="1" />
+    <End Role="GenFilme" Type="Self.GenFilme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genuri">
+        <PropertyRef Name="IdGen" />
+      </Principal>
+      <Dependent Role="GenFilme">
+        <PropertyRef Name="IdGen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocuriSali_ProgramariFilme">
+    <End Role="ProgramariFilme" Type="Self.ProgramariFilme" Multiplicity="1" />
+    <End Role="LocuriSali" Type="Self.LocuriSali" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProgramariFilme">
+        <PropertyRef Name="IdProgramare" />
+      </Principal>
+      <Dependent Role="LocuriSali">
+        <PropertyRef Name="IdProgramare" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProgramariFilme_Filme">
+    <End Role="Filme" Type="Self.Filme" Multiplicity="1" />
+    <End Role="ProgramariFilme" Type="Self.ProgramariFilme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filme">
+        <PropertyRef Name="IdFilm" />
+      </Principal>
+      <Dependent Role="ProgramariFilme">
+        <PropertyRef Name="IdFilm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProgramariFilme_Sali">
+    <End Role="Sali" Type="Self.Sali" Multiplicity="1" />
+    <End Role="ProgramariFilme" Type="Self.ProgramariFilme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sali">
+        <PropertyRef Name="NrSala" />
+      </Principal>
+      <Dependent Role="ProgramariFilme">
+        <PropertyRef Name="IdSala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipulFilmului_Filme">
+    <End Role="Filme" Type="Self.Filme" Multiplicity="1" />
+    <End Role="TipulFilmului" Type="Self.TipulFilmului" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filme">
+        <PropertyRef Name="IdFilm" />
+      </Principal>
+      <Dependent Role="TipulFilmului">
+        <PropertyRef Name="IdFilm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipulFilmului_Tipuri">
+    <End Role="Tipuri" Type="Self.Tipuri" Multiplicity="1" />
+    <End Role="TipulFilmului" Type="Self.TipulFilmului" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipuri">
+        <PropertyRef Name="IdTip" />
+      </Principal>
+      <Dependent Role="TipulFilmului">
+        <PropertyRef Name="IdTip" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CinemaModelStoreContainer">
+    <EntitySet Name="Filme" EntityType="Self.Filme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GenFilme" EntityType="Self.GenFilme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genuri" EntityType="Self.Genuri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProgramariFilme" EntityType="Self.ProgramariFilme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sali" EntityType="Self.Sali" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipuri" EntityType="Self.Tipuri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Angajati" EntityType="Self.Angajati" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Angajati].[Username] AS [Username], 
+    [Angajati].[Password] AS [Password], 
+    [Angajati].[Nume] AS [Nume], 
+    [Angajati].[Prenume] AS [Prenume], 
+    [Angajati].[CNP] AS [CNP]
+    FROM [dbo].[Angajati] AS [Angajati]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LocuriSali" EntityType="Self.LocuriSali" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LocuriSali].[IdProgramare] AS [IdProgramare], 
+    [LocuriSali].[NrLoc] AS [NrLoc], 
+    [LocuriSali].[State] AS [State]
+    FROM [dbo].[LocuriSali] AS [LocuriSali]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TipulFilmului" EntityType="Self.TipulFilmului" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TipulFilmului].[IdFilm] AS [IdFilm], 
+    [TipulFilmului].[IdTip] AS [IdTip], 
+    [TipulFilmului].[Cheie] AS [Cheie]
+    FROM [dbo].[TipulFilmului] AS [TipulFilmului]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_GenFilme_Filme" Association="Self.FK_GenFilme_Filme">
+      <End Role="Filme" EntitySet="Filme" />
+      <End Role="GenFilme" EntitySet="GenFilme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GenFilme_Genuri" Association="Self.FK_GenFilme_Genuri">
+      <End Role="Genuri" EntitySet="Genuri" />
+      <End Role="GenFilme" EntitySet="GenFilme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocuriSali_ProgramariFilme" Association="Self.FK_LocuriSali_ProgramariFilme">
+      <End Role="ProgramariFilme" EntitySet="ProgramariFilme" />
+      <End Role="LocuriSali" EntitySet="LocuriSali" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProgramariFilme_Filme" Association="Self.FK_ProgramariFilme_Filme">
+      <End Role="Filme" EntitySet="Filme" />
+      <End Role="ProgramariFilme" EntitySet="ProgramariFilme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProgramariFilme_Sali" Association="Self.FK_ProgramariFilme_Sali">
+      <End Role="Sali" EntitySet="Sali" />
+      <End Role="ProgramariFilme" EntitySet="ProgramariFilme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipulFilmului_Filme" Association="Self.FK_TipulFilmului_Filme">
+      <End Role="Filme" EntitySet="Filme" />
+      <End Role="TipulFilmului" EntitySet="TipulFilmului" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipulFilmului_Tipuri" Association="Self.FK_TipulFilmului_Tipuri">
+      <End Role="Tipuri" EntitySet="Tipuri" />
+      <End Role="TipulFilmului" EntitySet="TipulFilmului" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

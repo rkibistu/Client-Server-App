@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Filme">
+    <Key>
+      <PropertyRef Name="IdFilm" />
+    </Key>
+    <Property Name="IdFilm" Type="Int32" Nullable="false" />
+    <Property Name="Nume" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Rating" Type="Double" Nullable="false" />
+    <Property Name="Varsta_minima" Type="Int32" />
+    <Property Name="Poze" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Trailer" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Distributie" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="Limba_nativa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Regizor" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
+    <Property Name="Descriere" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Durata" Type="Int32" />
+    <NavigationProperty Name="GenFilmes" Relationship="Self.FK_GenFilme_Filme" FromRole="Filme" ToRole="GenFilme" />
+    <NavigationProperty Name="ProgramariFilmes" Relationship="Self.FK_ProgramariFilme_Filme" FromRole="Filme" ToRole="ProgramariFilme" />
+    <NavigationProperty Name="TipulFilmuluis" Relationship="Self.FK_TipulFilmului_Filme" FromRole="Filme" ToRole="TipulFilmului" />
+  </EntityType>
+  <EntityType Name="GenFilme">
+    <Key>
+      <PropertyRef Name="Cheie" />
+    </Key>
+    <Property Name="IdFilm" Type="Int32" Nullable="false" />
+    <Property Name="IdGen" Type="Int32" Nullable="false" />
+    <Property Name="Cheie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Filme" Relationship="Self.FK_GenFilme_Filme" FromRole="GenFilme" ToRole="Filme" />
+    <NavigationProperty Name="Genuri" Relationship="Self.FK_GenFilme_Genuri" FromRole="GenFilme" ToRole="Genuri" />
+  </EntityType>
+  <EntityType Name="Genuri">
+    <Key>
+      <PropertyRef Name="IdGen" />
+    </Key>
+    <Property Name="IdGen" Type="Int32" Nullable="false" />
+    <Property Name="Denumire" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="GenFilmes" Relationship="Self.FK_GenFilme_Genuri" FromRole="Genuri" ToRole="GenFilme" />
+  </EntityType>
+  <EntityType Name="ProgramariFilme">
+    <Key>
+      <PropertyRef Name="IdProgramare" />
+    </Key>
+    <Property Name="IdProgramare" Type="Int32" Nullable="false" />
+    <Property Name="IdSala" Type="Int32" Nullable="false" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="End" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdFilm" Type="Int32" Nullable="false" />
+    <Property Name="IdTip" Type="Int32" />
+    <Property Name="Pret" Type="Int32" />
+    <NavigationProperty Name="Filme" Relationship="Self.FK_ProgramariFilme_Filme" FromRole="ProgramariFilme" ToRole="Filme" />
+    <NavigationProperty Name="LocuriSalis" Relationship="Self.FK_LocuriSali_ProgramariFilme" FromRole="ProgramariFilme" ToRole="LocuriSali" />
+    <NavigationProperty Name="Sali" Relationship="Self.FK_ProgramariFilme_Sali" FromRole="ProgramariFilme" ToRole="Sali" />
+  </EntityType>
+  <EntityType Name="Sali">
+    <Key>
+      <PropertyRef Name="NrSala" />
+    </Key>
+    <Property Name="NrSala" Type="Int32" Nullable="false" />
+    <Property Name="Locuri" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProgramariFilmes" Relationship="Self.FK_ProgramariFilme_Sali" FromRole="Sali" ToRole="ProgramariFilme" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tipuri">
+    <Key>
+      <PropertyRef Name="IdTip" />
+    </Key>
+    <Property Name="IdTip" Type="Int32" Nullable="false" />
+    <Property Name="Denumire" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TipulFilmuluis" Relationship="Self.FK_TipulFilmului_Tipuri" FromRole="Tipuri" ToRole="TipulFilmului" />
+  </EntityType>
+  <EntityType Name="Angajati">
+    <Key>
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="Prenume" />
+      <PropertyRef Name="CNP" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CNP" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocuriSali">
+    <Key>
+      <PropertyRef Name="IdProgramare" />
+      <PropertyRef Name="NrLoc" />
+      <PropertyRef Name="State" />
+    </Key>
+    <Property Name="IdProgramare" Type="Int32" Nullable="false" />
+    <Property Name="NrLoc" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProgramariFilme" Relationship="Self.FK_LocuriSali_ProgramariFilme" FromRole="LocuriSali" ToRole="ProgramariFilme" />
+  </EntityType>
+  <EntityType Name="TipulFilmului">
+    <Key>
+      <PropertyRef Name="IdFilm" />
+      <PropertyRef Name="IdTip" />
+    </Key>
+    <Property Name="IdFilm" Type="Int32" Nullable="false" />
+    <Property Name="IdTip" Type="Int32" Nullable="false" />
+    <Property Name="Cheie" Type="Int32" />
+    <NavigationProperty Name="Filme" Relationship="Self.FK_TipulFilmului_Filme" FromRole="TipulFilmului" ToRole="Filme" />
+    <NavigationProperty Name="Tipuri" Relationship="Self.FK_TipulFilmului_Tipuri" FromRole="TipulFilmului" ToRole="Tipuri" />
+  </EntityType>
+  <Association Name="FK_GenFilme_Filme">
+    <End Role="Filme" Type="Self.Filme" Multiplicity="1" />
+    <End Role="GenFilme" Type="Self.GenFilme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filme">
+        <PropertyRef Name="IdFilm" />
+      </Principal>
+      <Dependent Role="GenFilme">
+        <PropertyRef Name="IdFilm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProgramariFilme_Filme">
+    <End Role="Filme" Type="Self.Filme" Multiplicity="1" />
+    <End Role="ProgramariFilme" Type="Self.ProgramariFilme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filme">
+        <PropertyRef Name="IdFilm" />
+      </Principal>
+      <Dependent Role="ProgramariFilme">
+        <PropertyRef Name="IdFilm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipulFilmului_Filme">
+    <End Role="Filme" Type="Self.Filme" Multiplicity="1" />
+    <End Role="TipulFilmului" Type="Self.TipulFilmului" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filme">
+        <PropertyRef Name="IdFilm" />
+      </Principal>
+      <Dependent Role="TipulFilmului">
+        <PropertyRef Name="IdFilm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GenFilme_Genuri">
+    <End Role="Genuri" Type="Self.Genuri" Multiplicity="1" />
+    <End Role="GenFilme" Type="Self.GenFilme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genuri">
+        <PropertyRef Name="IdGen" />
+      </Principal>
+      <Dependent Role="GenFilme">
+        <PropertyRef Name="IdGen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LocuriSali_ProgramariFilme">
+    <End Role="ProgramariFilme" Type="Self.ProgramariFilme" Multiplicity="1" />
+    <End Role="LocuriSali" Type="Self.LocuriSali" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProgramariFilme">
+        <PropertyRef Name="IdProgramare" />
+      </Principal>
+      <Dependent Role="LocuriSali">
+        <PropertyRef Name="IdProgramare" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProgramariFilme_Sali">
+    <End Role="Sali" Type="Self.Sali" Multiplicity="1" />
+    <End Role="ProgramariFilme" Type="Self.ProgramariFilme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sali">
+        <PropertyRef Name="NrSala" />
+      </Principal>
+      <Dependent Role="ProgramariFilme">
+        <PropertyRef Name="IdSala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipulFilmului_Tipuri">
+    <End Role="Tipuri" Type="Self.Tipuri" Multiplicity="1" />
+    <End Role="TipulFilmului" Type="Self.TipulFilmului" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipuri">
+        <PropertyRef Name="IdTip" />
+      </Principal>
+      <Dependent Role="TipulFilmului">
+        <PropertyRef Name="IdTip" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Marcel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Filmes" EntityType="Self.Filme" />
+    <EntitySet Name="GenFilmes" EntityType="Self.GenFilme" />
+    <EntitySet Name="Genuris" EntityType="Self.Genuri" />
+    <EntitySet Name="ProgramariFilmes" EntityType="Self.ProgramariFilme" />
+    <EntitySet Name="Salis" EntityType="Self.Sali" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tipuris" EntityType="Self.Tipuri" />
+    <EntitySet Name="Angajatis" EntityType="Self.Angajati" />
+    <EntitySet Name="LocuriSalis" EntityType="Self.LocuriSali" />
+    <EntitySet Name="TipulFilmuluis" EntityType="Self.TipulFilmului" />
+    <AssociationSet Name="FK_GenFilme_Filme" Association="Self.FK_GenFilme_Filme">
+      <End Role="Filme" EntitySet="Filmes" />
+      <End Role="GenFilme" EntitySet="GenFilmes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProgramariFilme_Filme" Association="Self.FK_ProgramariFilme_Filme">
+      <End Role="Filme" EntitySet="Filmes" />
+      <End Role="ProgramariFilme" EntitySet="ProgramariFilmes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipulFilmului_Filme" Association="Self.FK_TipulFilmului_Filme">
+      <End Role="Filme" EntitySet="Filmes" />
+      <End Role="TipulFilmului" EntitySet="TipulFilmuluis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GenFilme_Genuri" Association="Self.FK_GenFilme_Genuri">
+      <End Role="Genuri" EntitySet="Genuris" />
+      <End Role="GenFilme" EntitySet="GenFilmes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LocuriSali_ProgramariFilme" Association="Self.FK_LocuriSali_ProgramariFilme">
+      <End Role="ProgramariFilme" EntitySet="ProgramariFilmes" />
+      <End Role="LocuriSali" EntitySet="LocuriSalis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProgramariFilme_Sali" Association="Self.FK_ProgramariFilme_Sali">
+      <End Role="Sali" EntitySet="Salis" />
+      <End Role="ProgramariFilme" EntitySet="ProgramariFilmes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipulFilmului_Tipuri" Association="Self.FK_TipulFilmului_Tipuri">
+      <End Role="Tipuri" EntitySet="Tipuris" />
+      <End Role="TipulFilmului" EntitySet="TipulFilmuluis" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
